@@ -149,7 +149,7 @@ class CourierApiTestCase(unittest.TestCase):
         self.assertTrue(any(item["path"] == "/v1/shipments" for item in audit.json()["data"]))
 
     def test_demo_key_bearer_delivery_and_public_overview(self) -> None:
-        issued = self.client.post("/v1/keys/demo", json={"label": "tests", "ttl_minutes": 1})
+        issued = self.client.post("/api/demo", json={"label": "tests", "ttl_minutes": 1})
         self.assertEqual(issued.status_code, 201, issued.text)
         demo_key = issued.json()["key"]
         self.assertTrue(demo_key.startswith("demo_crr_"))

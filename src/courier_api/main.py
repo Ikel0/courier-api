@@ -251,6 +251,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def metrics() -> str:
         return app.state.metrics.render()
 
+    @app.post("/api/demo", response_model=DemoKeyResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
+    @app.post("/v1/demo", response_model=DemoKeyResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
     @app.post(
         "/v1/keys/demo",
         response_model=DemoKeyResponse,

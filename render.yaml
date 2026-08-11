@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: courier-api-ikel
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: COURIER_API_KEYS
+        generateValue: true
+      - key: COURIER_ALLOW_INSECURE_WEBHOOKS
+        value: "false"
+      - key: COURIER_RATE_LIMIT_PER_MINUTE
+        value: "120"
+      - key: COURIER_ENABLE_DEMO_KEYS
+        value: "true"
+      - key: COURIER_SEED_DEMO_DATA
+        value: "true"

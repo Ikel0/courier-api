@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Courier API est un terrain de démonstration pour concevoir, sécuriser et observer une API de livraison événementielle.">
+  <title>Courier API · atelier d'API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#studio">Aller au studio de requêtes</a>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Courier API, retour en haut">
+      <span class="brand-mark">C</span>
+      <span>courier<span class="brand-dot">.</span>api</span>
+    </a>
+    <p class="header-note">atelier / interfaces fiables</p>
+    <div class="service-state" id="service-state" aria-live="polite">
+      <i></i><span>vérification du service</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-intro">
+        <p class="eyebrow"><span></span> Projet court · API engineering</p>
+        <h1 id="hero-title">Une API ne se résume pas à <em>répondre.</em></h1>
+        <p class="hero-copy">Courier est un petit laboratoire pour penser une API comme un produit : contrat explicite, clé de démonstration, idempotence, erreurs lisibles et trace de livraison.</p>
+        <div class="hero-actions">
+          <button class="button button-dark" id="create-demo-key" type="button">
+            Créer une clé de démo <span aria-hidden="true">↗</span>
+          </button>
+          <a class="quiet-link" href="#studio">Ouvrir le studio <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Résumé technique de Courier API">
+        <div class="hero-card-top">
+          <p>contrat / v1</p>
+          <span>HTTP</span>
+        </div>
+        <div class="route-stamp">
+          <span class="method post">POST</span>
+          <code>/v1/deliveries</code>
+        </div>
+        <div class="route-line"><span>authentification</span><b>API key</b></div>
+        <div class="route-line"><span>rejeu</span><b>idempotency key</b></div>
+        <div class="route-line"><span>retour</span><b>202 · trace id</b></div>
+        <p class="hero-card-foot">une livraison peut être suivie, rejouée et expliquée.</p>
+      </aside>
+    </section>
+
+    <section class="metrics" aria-label="Ce que Courier démontre">
+      <article>
+        <p>01 / contrat</p>
+        <strong>Entrées<br><em>contrôlées</em></strong>
+        <span>validation, messages d'erreur et exemples utilisables.</span>
+      </article>
+      <article>
+        <p>02 / sécurité</p>
+        <strong>Accès<br><em>borné</em></strong>
+        <span>une clé de démo, des en-têtes lisibles, aucun secret exposé.</span>
+      </article>
+      <article>
+        <p>03 / exploitation</p>
+        <strong>Trace<br><em>utile</em></strong>
+        <span>chaque demande laisse une empreinte exploitable par une équipe.</span>
+      </article>
+    </section>
+
+    <section class="api-strip" aria-label="Accès rapide aux endpoints">
+      <p>surface disponible</p>
+      <a href="#studio" data-route="health"><span class="method get">GET</span><code>/health</code></a>
+      <a href="#studio" data-route="demo-key"><span class="method post">POST</span><code>/v1/keys/demo</code></a>
+      <a href="#studio" data-route="delivery-create"><span class="method post">POST</span><code>/v1/deliveries</code></a>
+      <a href="#studio" data-route="delivery-list"><span class="method get">GET</span><code>/v1/deliveries</code></a>
+    </section>
+
+    <section class="studio" id="studio" aria-labelledby="studio-title">
+      <div class="section-heading">
+        <p class="eyebrow"><span></span> Le studio</p>
+        <h2 id="studio-title">Une demande,<br>sa <em>preuve.</em></h2>
+        <p>Les appels partent vers cette instance si le backend est disponible. Sinon, l'interface reste parcourable avec un scénario local clairement indiqué.</p>
+      </div>
+
+      <div class="studio-shell">
+        <nav class="endpoint-nav" aria-label="Endpoints Courier API">
+          <p class="nav-label">endpoints</p>
+          <button class="endpoint active" type="button" data-endpoint="health">
+            <span class="method get">GET</span><code>/health</code><small>sonde</small>
+          </button>
+          <button class="endpoint" type="button" data-endpoint="demo-key">
+            <span class="method post">POST</span><code>/v1/keys/demo</code><small>accès</small>
+          </button>
+          <button class="endpoint" type="button" data-endpoint="delivery-create">
+            <span class="method post">POST</span><code>/v1/deliveries</code><small>émettre</small>
+          </button>
+          <button class="endpoint" type="button" data-endpoint="delivery-list">
+            <span class="method get">GET</span><code>/v1/deliveries</code><small>lire</small>
+          </button>
+          <div class="nav-bottom">
+            <span>base URL</span>
+            <code id="base-url">cette instance</code>
+          </div>
+        </nav>
+
+        <div class="request-workspace">
+          <div class="request-head">
+            <div>
+              <p id="request-category">SONDE SYSTÈME</p>
+              <h3 id="request-title">Vérifier la disponibilité</h3>
+            </div>
+            <span class="request-auth" id="request-auth">sans authentification</span>
+          </div>
+
+          <div class="request-route">
+            <span class="method get" id="request-method">GET</span>
+            <code id="request-path">/health</code>
+            <button type="button" class="play-button" id="send-request" aria-label="Envoyer la requête">Envoyer <span aria-hidden="true">↗</span></button>
+          </div>
+
+          <div class="request-grid">
+            <label class="payload-label" for="payload">
+              <span>corps / json</span>
+              <textarea id="payload" spellcheck="false" aria-label="Corps JSON de la requête"></textarea>
+            </label>
+            <div class="request-notes">
+              <p>À retenir</p>
+              <ul id="request-notes"></ul>
+              <div class="header-example" id="header-example"></div>
+            </div>
+          </div>
+
+          <div class="response-panel" aria-live="polite">
+            <div class="response-head">
+              <div><span class="response-dot" id="response-dot"></span><p id="response-status">Prêt à envoyer</p></div>
+              <button type="button" class="copy-button" id="copy-response">Copier</button>
+            </div>
+            <pre id="response-output">{
+  "tip": "Choisissez un endpoint puis envoyez une requête."
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="key-zone" aria-labelledby="key-title">
+      <div>
+        <p class="eyebrow"><span></span> clé éphémère</p>
+        <h2 id="key-title">Pas de secret caché.<br><em>Une vraie explication.</em></h2>
+      </div>
+      <div class="key-card">
+        <div class="key-card-head"><span>Authorization</span><b id="key-mode">à créer</b></div>
+        <code id="demo-key">Bearer demo_••••••••••••••••</code>
+        <div class="key-card-actions">
+          <button type="button" id="copy-key">Copier la clé</button>
+          <button type="button" id="rotate-key">Renouveler</button>
+        </div>
+        <p>La clé de démo sert à tester le contrat localement. Pour une vraie intégration, elle serait stockée chiffrée et limitée par environnement.</p>
+      </div>
+    </section>
+
+    <section class="trace-section" aria-labelledby="trace-title">
+      <div class="trace-heading">
+        <div>
+          <p class="eyebrow"><span></span> dernière activité</p>
+          <h2 id="trace-title">Le journal de<br><em>livraison.</em></h2>
+        </div>
+        <button class="refresh-button" type="button" id="refresh-overview">Actualiser <span aria-hidden="true">↻</span></button>
+      </div>
+      <div class="trace-ledger" id="trace-ledger" aria-live="polite"></div>
+      <p class="trace-caption" id="trace-caption">En attente du service Courier.</p>
+    </section>
+
+    <section class="principles" aria-labelledby="principles-title">
+      <div class="principles-head">
+        <p class="eyebrow"><span></span> ce que le projet travaille</p>
+        <h2 id="principles-title">Une petite API, mais les <em>bons réflexes.</em></h2>
+      </div>
+      <div class="principle-grid">
+        <article>
+          <span>01</span><h3>Contrat avant code</h3><p>Le format d'entrée et les états de réponse sont des décisions produit, pas un détail d'implémentation.</p>
+        </article>
+        <article>
+          <span>02</span><h3>Idempotence explicite</h3><p>Une même clé d'opération ne doit pas créer deux livraisons lorsqu'un client réessaie.</p>
+        </article>
+        <article>
+          <span>03</span><h3>Erreur qui aide</h3><p>Un statut HTTP est accompagné d'un code, d'un message et d'un contexte actionnable.</p>
+        </article>
+        <article>
+          <span>04</span><h3>Trace pour opérer</h3><p>Chaque demande possède un identifiant de trace afin d'aligner client, logs et support.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>COURIER API · projet d'atelier par Ikel Ouedraogo</p>
+    <a href="https://ikel0.github.io/" target="_blank" rel="noreferrer">retour au portfolio <span aria-hidden="true">↗</span></a>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

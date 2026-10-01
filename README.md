@@ -31,6 +31,15 @@ uvicorn courier_api.main:app --reload
 
 Ensuite ouvrir <http://localhost:8000>. La documentation OpenAPI reste disponible sur <http://localhost:8000/docs>.
 
+## Parcours de démonstration
+
+1. Dans le playground, créer une clé de démo de 30 minutes.
+2. Ouvrir `POST /v1/deliveries`, conserver l'`idempotency_key` proposée et envoyer la demande.
+3. Renvoyer la même demande : la réponse est rejouée avec `Idempotency-Replayed: true` au lieu de créer une seconde livraison.
+4. Ouvrir `GET /v1/deliveries` ou le journal de l'interface pour retrouver le `trace_id`.
+
+Le mode local de l'interface est volontairement signalé quand le backend ne répond pas. Il sert uniquement à parcourir le contrat, pas à faire croire que la requête a été envoyée.
+
 Pour injecter le jeu de données fictif de l’interface sans faire aucun appel réseau :
 
 ```bash

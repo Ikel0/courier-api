@@ -29,8 +29,8 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-intro">
         <p class="eyebrow"><span></span> Projet court · API engineering</p>
-        <h1 id="hero-title">Une API ne se résume pas à <em>répondre.</em></h1>
-        <p class="hero-copy">Courier est un petit laboratoire pour penser une API comme un produit : contrat explicite, clé de démonstration, idempotence, erreurs lisibles et trace de livraison.</p>
+        <h1 id="hero-title">Créer une livraison,<br><em>puis lire sa trace.</em></h1>
+        <p class="hero-copy">Courier est un playground d'intégration : générer une clé de démo, déposer un événement, le rejouer sans doublon et relire ce qui s'est passé.</p>
         <div class="hero-actions">
           <button class="button button-dark" id="create-demo-key" type="button">
             Créer une clé de démo <span aria-hidden="true">↗</span>
@@ -50,25 +50,25 @@
         <div class="route-line"><span>authentification</span><b>API key</b></div>
         <div class="route-line"><span>rejeu</span><b>idempotency key</b></div>
         <div class="route-line"><span>retour</span><b>202 · trace id</b></div>
-        <p class="hero-card-foot">une livraison peut être suivie, rejouée et expliquée.</p>
+        <p class="hero-card-foot">une même demande peut être rejouée sans créer une seconde livraison.</p>
       </aside>
     </section>
 
     <section class="metrics" aria-label="Ce que Courier démontre">
       <article>
-        <p>01 / contrat</p>
-        <strong>Entrées<br><em>contrôlées</em></strong>
-        <span>validation, messages d'erreur et exemples utilisables.</span>
+        <p>01 / accès</p>
+        <strong>Créer une<br><em>clé courte</em></strong>
+        <span>une clé Bearer éphémère, limitée au playground.</span>
       </article>
       <article>
-        <p>02 / sécurité</p>
-        <strong>Accès<br><em>borné</em></strong>
-        <span>une clé de démo, des en-têtes lisibles, aucun secret exposé.</span>
+        <p>02 / écriture</p>
+        <strong>Déposer une<br><em>demande</em></strong>
+        <span>un contrat JSON, une clé d'idempotence, un retour 202.</span>
       </article>
       <article>
-        <p>03 / exploitation</p>
-        <strong>Trace<br><em>utile</em></strong>
-        <span>chaque demande laisse une empreinte exploitable par une équipe.</span>
+        <p>03 / lecture</p>
+        <strong>Relire la<br><em>trace</em></strong>
+        <span>une réponse rejouée et un journal compact à inspecter.</span>
       </article>
     </section>
 
@@ -83,7 +83,7 @@
     <section class="studio" id="studio" aria-labelledby="studio-title">
       <div class="section-heading">
         <p class="eyebrow"><span></span> Le studio</p>
-        <h2 id="studio-title">Une demande,<br>sa <em>preuve.</em></h2>
+        <h2 id="studio-title">Envoyer une requête,<br>lire sa <em>réponse.</em></h2>
         <p>Les appels partent vers cette instance si le backend est disponible. Sinon, l'interface reste parcourable avec un scénario local clairement indiqué.</p>
       </div>
 
@@ -151,7 +151,7 @@
     <section class="key-zone" aria-labelledby="key-title">
       <div>
         <p class="eyebrow"><span></span> clé éphémère</p>
-        <h2 id="key-title">Pas de secret caché.<br><em>Une vraie explication.</em></h2>
+        <h2 id="key-title">Une clé de démo.<br><em>Une limite visible.</em></h2>
       </div>
       <div class="key-card">
         <div class="key-card-head"><span>Authorization</span><b id="key-mode">à créer</b></div>

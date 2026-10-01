@@ -32,8 +32,11 @@
         <h1 id="hero-title">Créer une livraison,<br><em>puis lire sa trace.</em></h1>
         <p class="hero-copy">Courier est un playground d'intégration : générer une clé de démo, déposer un événement, le rejouer sans doublon et relire ce qui s'est passé.</p>
         <div class="hero-actions">
+          <button class="button button-dark" id="run-quick-demo" type="button">
+            Tester le parcours complet <span aria-hidden="true">↗</span>
+          </button>
           <button class="button button-dark" id="create-demo-key" type="button">
-            Créer une clé de démo <span aria-hidden="true">↗</span>
+            Créer une clé seulement <span aria-hidden="true">↗</span>
           </button>
           <a class="quiet-link" href="#studio">Ouvrir le studio <span aria-hidden="true">↓</span></a>
         </div>
@@ -84,7 +87,7 @@
       <div class="section-heading">
         <p class="eyebrow"><span></span> Le studio</p>
         <h2 id="studio-title">Envoyer une requête,<br>lire sa <em>réponse.</em></h2>
-        <p>Les appels partent vers cette instance si le backend est disponible. Sinon, l'interface reste parcourable avec un scénario local clairement indiqué.</p>
+        <p>Le test complet crée une clé, dépose une livraison puis ouvre le journal. Les appels partent vers cette instance si le backend est disponible. Sinon, l'interface reste parcourable avec un scénario local clairement indiqué.</p>
       </div>
 
       <div class="studio-shell">

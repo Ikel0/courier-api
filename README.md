@@ -31,7 +31,13 @@ uvicorn courier_api.main:app --reload
 
 Ensuite ouvrir <http://localhost:8000>. La documentation OpenAPI reste disponible sur <http://localhost:8000/docs>.
 
-## Parcours de démonstration
+## Test en moins d’une minute
+
+Ouvre l’interface puis clique sur **Tester le parcours complet**. Courier enchaîne la création d’une clé de démo, le dépôt d’une livraison et la lecture du journal. Chaque réponse reste visible dans le studio et le bouton peut être rejoué pour observer l’idempotence.
+
+Courier ne dépend volontairement d’aucune source publique : son sujet est le comportement d’une API, pas l’enrichissement de données. Si le backend ne répond pas, l’interface l’indique et présente un scénario local sans le faire passer pour une réponse réelle.
+
+## Parcours détaillé
 
 1. Dans le playground, créer une clé de démo de 30 minutes.
 2. Ouvrir `POST /v1/deliveries`, conserver l'`idempotency_key` proposée et envoyer la demande.

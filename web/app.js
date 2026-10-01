@@ -231,6 +231,25 @@
     if (old !== 'demo-key') window.setTimeout(() => renderEndpoint(old), 900);
   }
 
+  async function runQuickDemo() {
+    const button = document.getElementById('run-quick-demo');
+    button.disabled = true;
+    button.textContent = 'Parcours en cours…';
+    document.getElementById('studio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      renderEndpoint('demo-key');
+      await sendRequest();
+      renderEndpoint('delivery-create');
+      await sendRequest();
+      renderEndpoint('delivery-list');
+      await sendRequest();
+      notify(online ? 'Parcours complet exécuté sur le service.' : 'Parcours local affiché. Le backend est indisponible.');
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Rejouer le parcours complet ↗';
+    }
+  }
+
   async function refreshOverview() {
     try {
       const { data } = await fetchJson('/api/overview');
@@ -264,6 +283,7 @@
   document.querySelectorAll('.api-strip a[data-route]').forEach((link) => link.addEventListener('click', () => renderEndpoint(link.dataset.route)));
   ui.send.addEventListener('click', sendRequest);
   document.getElementById('create-demo-key').addEventListener('click', createDemoKey);
+  document.getElementById('run-quick-demo').addEventListener('click', runQuickDemo);
   document.getElementById('rotate-key').addEventListener('click', createDemoKey);
   document.getElementById('copy-key').addEventListener('click', () => copyText(key ? `Bearer ${key}` : ui.demoKey.textContent, 'Clé copiée.'));
   document.getElementById('copy-response').addEventListener('click', () => copyText(ui.response.textContent, 'Réponse copiée.'));

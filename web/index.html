@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Courier API est un terrain de démonstration pour concevoir, sécuriser et observer une API de livraison événementielle.">
-  <title>Courier API · atelier d'API</title>
+  <title>Courier API · parcours d'intégration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=20261002">
 </head>
 <body>
   <a class="skip-link" href="#studio">Aller au studio de requêtes</a>
@@ -19,7 +19,7 @@
       <span class="brand-mark">C</span>
       <span>courier<span class="brand-dot">.</span>api</span>
     </a>
-    <p class="header-note">atelier / interfaces fiables</p>
+    <p class="header-note">contrats / traces / rejeu</p>
     <div class="service-state" id="service-state" aria-live="polite">
       <i></i><span>vérification du service</span>
     </div>
@@ -35,10 +35,13 @@
           <button class="button button-dark" id="run-quick-demo" type="button">
             Tester le parcours complet <span aria-hidden="true">↗</span>
           </button>
-          <button class="button button-dark" id="create-demo-key" type="button">
+          <button class="button button-secondary" id="create-demo-key" type="button">
             Créer une clé seulement <span aria-hidden="true">↗</span>
           </button>
           <a class="quiet-link" href="#studio">Ouvrir le studio <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="quick-progress" id="quick-progress" aria-live="polite">
+          <span data-step="key"><b>01</b> clé</span><i></i><span data-step="delivery"><b>02</b> livraison</span><i></i><span data-step="journal"><b>03</b> journal</span>
         </div>
       </div>
       <aside class="hero-card" aria-label="Résumé technique de Courier API">
@@ -202,11 +205,11 @@
   </main>
 
   <footer>
-    <p>COURIER API · projet d'atelier par Ikel Ouedraogo</p>
+    <p>COURIER API · conçu par Ikel Ouedraogo</p>
     <a href="https://ikel0.github.io/" target="_blank" rel="noreferrer">retour au portfolio <span aria-hidden="true">↗</span></a>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="/app.js" defer></script>
+  <script src="/app.js?v=20261002" defer></script>
 </body>
 </html>

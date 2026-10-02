@@ -233,16 +233,28 @@
 
   async function runQuickDemo() {
     const button = document.getElementById('run-quick-demo');
+    const steps = [...document.querySelectorAll('#quick-progress [data-step]')];
+    const markStep = (name) => {
+      const position = steps.findIndex((step) => step.dataset.step === name);
+      steps.forEach((step, index) => {
+        step.classList.toggle('done', index < position);
+        step.classList.toggle('active', index === position);
+      });
+    };
     button.disabled = true;
     button.textContent = 'Parcours en cours…';
     document.getElementById('studio').scrollIntoView({ behavior: 'smooth', block: 'start' });
     try {
+      markStep('key');
       renderEndpoint('demo-key');
       await sendRequest();
+      markStep('delivery');
       renderEndpoint('delivery-create');
       await sendRequest();
+      markStep('journal');
       renderEndpoint('delivery-list');
       await sendRequest();
+      steps.forEach((step) => { step.classList.remove('active'); step.classList.add('done'); });
       notify(online ? 'Parcours complet exécuté sur le service.' : 'Parcours local affiché. Le backend est indisponible.');
     } finally {
       button.disabled = false;

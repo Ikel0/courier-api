@@ -218,7 +218,8 @@
     key = payload?.key || payload?.api_key || payload?.token || `demo_crr_${Math.random().toString(36).slice(2, 12)}`;
     const visible = key.length > 20 ? `${key.slice(0, 15)}••••${key.slice(-4)}` : key;
     ui.demoKey.textContent = `Bearer ${visible}`;
-    ui.keyMode.textContent = 'active · 30 min';
+    const minutes = Math.round((payload?.expires_in_seconds || 1800) / 60);
+    ui.keyMode.textContent = `active · ${minutes} min`;
     notify('Clé de démonstration prête pour le studio.');
   }
 

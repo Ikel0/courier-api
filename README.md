@@ -39,7 +39,7 @@ Courier ne dépend volontairement d’aucune source publique : son sujet est le 
 
 ## Parcours détaillé
 
-1. Dans le playground, créer une clé de démo de 30 minutes.
+1. Dans le playground, créer une clé de démo (30 minutes par défaut, 60 au maximum).
 2. Ouvrir `POST /v1/deliveries`, conserver l'`idempotency_key` proposée et envoyer la demande.
 3. Renvoyer la même demande : la réponse est rejouée avec `Idempotency-Replayed: true` au lieu de créer une seconde livraison.
 4. Ouvrir `GET /v1/deliveries` ou le journal de l'interface pour retrouver le `trace_id`.
@@ -102,7 +102,7 @@ X-Courier-Signature: v1=<signature>
 | Groupe | Endpoint | Rôle |
 | --- | --- | --- |
 | Service | `GET /healthz`, `GET /readyz`, `GET /metrics` | Liveness, readiness, métriques |
-| Playground | `POST /v1/keys/demo` | Génère une clé Bearer limitée à 60 min |
+| Playground | `POST /v1/keys/demo` | Génère une clé Bearer de 30 min par défaut (`ttl_minutes`, 60 au maximum) |
 | Playground | `POST/GET /v1/deliveries` | Crée/lit une demande sortante avec trace et idempotence |
 | Colis | `POST/GET /v1/shipments` | Crée/liste des envois, curseurs stables |
 | Colis | `PATCH /v1/shipments/{id}/status` | Transition d’état contrôlée |
